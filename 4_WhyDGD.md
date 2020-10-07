@@ -2,7 +2,7 @@
 
 I said DGD is weird. What's weird? What makes DGD unusual?
 
-## No Console - DGD Likes Networks and Files
+## Not About the Console - DGD Likes Networks and Files
 
 DGD doesn't normally operate by reading input from your keyboard and printing output back to you. It can print output, but that's not frequent. Instead, DGD is designed for a networked environment where it will read and write files, and read and write network sockets.
 

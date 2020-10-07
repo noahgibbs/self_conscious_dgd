@@ -12,6 +12,6 @@ Mostly I'm gonna play this book straight. Let's talk about how you'd actually wr
 
 If you learn DGD before that, you can be one of those smug, annoying old programmers who says "oh yeah, I knew about that feature back when all the ways to use it were awful. Let me show you how it's done."
 
-Javascript data inheritance? LPC was doing it before the rest of the world. Dynamic code reloading? DGD did it before Rails made it common. It had an extensive type-based directory structure before Java and Rails stole that trick, either. DGD still has a few tricks yet to be stolen. Atomic functions? Somebody will steal them. Caller- and object-name-based security? It'll happen.
+Javascript data inheritance ("prototype inheritance")? LPC was doing it before the rest of the world. Dynamic code reloading? DGD did it before Rails made it common. It had an extensive type-based directory structure before Java and Rails stole that trick. DGD still has a few tricks yet to be stolen. Atomic functions? Somebody will steal them. Caller- and object-name-based security? It'll happen.
 
 You can be the smug grognard for ***those*** features... If you learn now.
