@@ -1,9 +1,6 @@
 
 ```
-  2.3 Loops
   2.4 StringHandling
-  2.5 UserOutput
-  2.6 CodeInFiles
   2.7 Arrays
   2.8 Mappings
   2.9 Functions
