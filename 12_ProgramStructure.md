@@ -105,11 +105,13 @@ Those are variables that exist in the object once it's been compiled. If the obj
 
 In an inheritable (library) program, the original program doesn't have variables you can actually use. You're not allowed to touch them. But if a singleton object inherits from it, it will have those variables. And if a cloneable inherits from it, it will have them and so will all its clones.
 
-You can think of these as fields in a class, effectively. They have a type like "int" or "string". They have a name. And they can have some other modifiers, "private" and "static."
+You can think of these as fields in a class. They have a type like "int" or "string". They have a name. And they can have some other modifiers, "private" and "static."
 
 ### static
 
-Static program variables won't be affected by the (mostly obsolete) save_object and restore_object kfuns. You'll rarely see static used, and it even more rarely makes the slightest difference.
+Static program variables won't be affected by the (mostly obsolete) save_object and restore_object kfuns. You'll rarely see static used, and it basically never makes the slightest difference.
+
+Save_object and restore_object are leftovers from older pre-DGD versions of LPC. They're not normally used in DGD-based MUDs.
 
 Note that statedumps are ***not*** obsolete, and the "static" modifier has no effect on them.
 

@@ -1,36 +1,11 @@
 @@SECTION Tutorial.GettingStarted Getting Started
 
-<p>Now that you have the Kernel Library running, it's time to start
-learning some simple LPC code. There are two ways to test your LPC
-code with the Kernel Library. We'll start with the simpler way,
-which is called the "code" command.</p>
-
-<p>Log in as admin, if you haven't already. Type <kbd>code
-7+4</kbd>. You should see a response like <samp>$0 = 11</samp>. The
-$0 is a value that DGD will store for you. You can refer to it
-later whenever you like. For instance, if you typed <kbd>code
-$0+9</kbd>, you'd see a result like <samp>$1 = 20</samp>. Note that
-this time the history value is $1, not $0. $0 keeps its old value,
-and a new history item, $1, gets the new value. The history number
-will keep increasing as you perform commands that place values into
-the history list.</p>
 
 <p>Next try typing <kbd>code status()[ST_VERSION]</kbd>. Note the
 opening and closing parentheses go <em>before</em>
 <var>ST_VERSION</var> in square brackets. If you do it right,
 you'll get the current version of DGD, such as <samp>$2 = "DGD
 1.2.101".</samp></p>
-
-<p><samp>The parentheses after a name mean to call a function by
-that name. Anything between the parentheses are the
-<dfn>arguments</dfn> of the function, also called parameters. For
-instance, try typing <kbd>code sin(2.0 * 3.14159)</kbd>. You should
-get a result like <samp>$3 = -5.3071519e-6</samp>. Whatever result
-you get, it should be a very small number, like the above. That's
-because you're calculating the sine of two pi, which (if calculated
-absolutely perfectly) is zero. Now try typing the same thing, but
-with 2 instead of 2.0. If you're used to programming in C, the
-result may surprise you!</samp></p>
 
 <p>It turns out that <var>ST_VERSION</var>, in the example with
 status(), is actually a number. The code command defines certain
@@ -104,31 +79,6 @@ did in the last paragraph. Its value is what gets returned, and so
 that value is what gets assigned to a history variable like $9 or
 $26.</p>
 
-<p>A variable in LPC isn't exactly like a mathematical variable.
-The equals sign above doesn't really mean equality in a
-mathematical sense. Instead, the equals is often called
-<dfn>assignment</dfn>. It is setting the variable to have a value.
-But unlike in mathematics, the variable can be repeatedly assigned,
-changing its value throughout your code. A variable's value is the
-most recent value that has been assigned to it.</p>
-
-<p>You've already seen the <dfn>+</dfn> operator. There's also a
-minus, <dfn>-</dfn> which works the way you'd expect &mdash; it can
-be used to make a number or variable negative, or to subtract two
-numbers. The asterisk <dfn>*</dfn> means multiplication, and the
-forward-slash, <dfn>/</dfn> represents division. Remember that you
-can only add, multiply, subtract or divide integers with integers
-and floating point numbers (DGD speak for decimal numbers) with
-other floating point numbers. If you try to do otherwise, such as
-by typing <kbd>code 7 + 4.1</kbd>, you'll get an error. Try it and
-see.</p>
-
-<p>Most of DGD's operations give exactly the answer you'd expect,
-but division of integers sometimes doesn't. If you divide, say,
-five by two, you'll find that DGD automatically rounds down to 2.
-DGD will always round toward zero when you divide integers. Test
-with the code command and see.</p>
-
 <p>Integers are signed, and limited in size. If you try typing
 <kbd>code 10000 * 10000 * 10000</kbd>, you'll see a strange result
 &mdash; it's negative! That's because integers have a maximum value
@@ -174,79 +124,7 @@ point numbers, not with integers. That means that to double a
 floating point number, you'd need to multiply it by 2.0 rather than
 just 2.</p>
 
-@@SECTION Tutorial.Loops Looping and Iteration
-
-<p>The LPC language is well-suited to math-intensive tasks, as
-you'd guess from the previous section. For instance, let's say you
-wanted to find out how many times you'd have to double the number
-two before you got to some very high number. That's something you
-could probably do in your head or on paper for small numbers. But
-for a number like ten million, you're probably better off letting
-the computer do it.</p>
-
-<p>Try typing <kbd>code int times; int count; times = 0; count = 2;
-while(count &lt; 10000000) { count = count * 2; times = times + 1;
-} return times;</kbd> Note that you must <em>not</em> hit return
-until the very end &mdash; you have to type the whole thing on one
-line. If you do it right, you should get 23 as the answer.</p>
-
-<p>But is 23 the right answer? Hard to tell. So we should start
-with 2 and double it 23 times, just to be sure. Go ahead and type
-<kbd>code int times; int count; times = 0; count = 2; while(times
-&lt; 20) { count = count * 2; times = times + 1; } return
-count;</kbd>. You should get the value 16777216 returned. And yes,
-that's more than ten million. So our code works! Now, <em>how</em>
-does it work?</p>
-
-<p>You know about declaring variables and setting values, but
-<dfn>while</dfn> is a new one. While takes a condition in
-parentheses, and then a bunch of stuff between curly braces. The
-stuff in curly braces is done over and over again until the
-condition in parentheses is false. So in the first example above,
-the code will keep doubling the <var>count</var> variable and
-adding one to the <var>times</var> variable until <var>count</var>
-is no longer less than ten million. Then it will return
-<var>count</var>, which is how many times it had to double.</p>
-
-<p>Once you understand the first example, you should be able to
-figure out the second example on your own.</p>
-
-<p>There's another kind of loop called a <dfn>for</dfn> loop, which
-is very similar. The first example, written as a for loop, looks
-like this: <kbd>code int times; int count; for(times = 0, count =
-2; count &lt; 10000000; count = count * 2, times = times + 1) { }
-return times;</kbd> A for loop is a lot like a while loop, but the
-syntax is funny. Note that after the word "for", you have three
-different pieces of code in the parentheses, each separated by a
-semicolon. The first piece of the code is done before the loop
-begins. In this case, it sets <var>times</var> to 0 and
-<var>count</var> to 2. The second piece of code, <code>count &lt;
-10000000</code> is checked every time through the loop. In this
-case it's checking whether count is more than ten million, just
-like the while loop did.</p>
-
-<p>And the last section is done at the end of every time through
-the loop. So the things that were inside the while loop have moved
-to the for loop's third section of code. Putting code in the third
-section of the parentheses has the same effect as putting it in the
-loop body, so you can divide the code between the two however you
-like.</p>
-
 @@SECTION Tutorial.StringHandling Simple String Manipulation
-
-<p>Some time back, we called the status() function, and extracted a
-result which wasn't a number at all. It was a <dfn>string</dfn>,
-which is a set of character values, one after the other. Of course,
-it doesn't usually look that way. It usually looks like a word or
-phrase or paragraph.</p>
-
-<p>In DGD, just like in C, strings use what's called ASCII code.
-Computers represent everything with numbers internally. So every
-printable character (and many special characters with no printable
-representation) must be assigned a number. ASCII is one way to
-assign those numbers. A DGD string is just a sequence of numbers,
-each representing a letter, number or other printable
-character.</p>
 
 <p>A DGD string can also hold the empty string, which is written as
 "". That's a sequence of <em>zero</em> characters, and it just
@@ -256,11 +134,6 @@ declare it. So do certain other data types we'll talk about later.
 <var>nil</var> isn't a valid string, it's just a placeholder
 meaning that the string isn't usable yet &mdash; you have to assign
 a value to it first.</p>
-
-<p>So go ahead and type <kbd>code "Hello world!"</kbd>. You should
-see a result something like <samp>$15 = "Hello world!"</samp>. The
-quotation marks around it mean that it's a string. In LPC, a string
-is always double-quoted.</p>
 
 <p>Just as you can use operations like + and * on numbers, you can
 also use certain operators on strings. For instance, the
@@ -379,36 +252,6 @@ more.</p>
 
 @@SECTION Tutorial.CodeInFiles Making and Using LPC Files
 
-<p>You may be getting pretty tired of the code command by now. Even
-if you're not, you're probably starting to understand why we don't
-use it for big programs. Retyping all that stuff can get ugly.
-Typos are difficult to correct if you're retyping everything. And
-the code would certainly <em>look</em> better if it could be
-formatted properly.</p>
-
-<p>To start using LPC files, you'll first need to be able to edit
-text files somehow. That means you'll need an <dfn>editing
-program</dfn>, or <dfn>editor</dfn>.</p>
-
-<p>Since you're running your own copy of DGD, the easiest way for
-you to edit files is to use an editing program that's on your
-desktop. While it's possible to use the <a href=
-"Misc_EditorQuick.html">built-in DGD editor</a>, it's probably
-easier not to. The built-in one isn't a very good editor by modern
-standards, and it's hard to use if you're used to normal desktop
-editing programs.</p>
-
-<p>On Unix, whatever editor you've already got will almost
-certainly do. On Windows, however, you'll need to be careful
-because most editors put Windows-style line breaks into text files.
-DGD requires Unix-style line breaks in its text files. If you don't
-know what line breaks are, don't worry too much, but <em>do</em>
-follow the instructions here anyway. TextPad is a freely available
-Win32 editor that will handle line breaks properly. There are also
-versions of emacs and vi for Windows, and either will work. I don't
-know the situation on Macintosh computers, so I don't know what
-editors are available that will handle non-native line breaks.</p>
-
 <p>It's useful to know what the code command does so you can get
 your code to work similarly. The code command makes a new object
 from a file every time you use it. That file looks something like
@@ -433,7 +276,7 @@ instance, a <code>return</code> statement is added before your code
 if that code doesn't end with a semicolon or end-curly-brace. Also,
 your code has all the history references turned into something more
 palatable. The history variables aren't part of DGD's dialect of
-LPC. They're only part of the Kernel Library.</p>
+LPC. They're only part of the Kernel Library's wiztool.</p>
 
 <p>To create the LPC file, you'll need to use your editor to create
 a file called <tt>/usr/admin/myobj.c</tt>. Note that that filename
@@ -722,13 +565,6 @@ end, we call a function called map_indices which returns an array
 of the indices (keys) of the mapping, in alphabetical
 order.</p>
 
-@@SECTION Tutorial.Functions Functions
-
-<p>You've seen some functions in previous sections, but we haven't
-really explored how they work.</p>
-
-@@SECTION Tutorial.Objects Objects
-
 @@SECTION Tutorial.Arguments Arguments and Call-By-Value
 
 <p>In LPC, most values are passed by value. That means if you pass
@@ -790,5 +626,3 @@ void trusted_function(void) {
   untrusted_function(7, "sam", copied_users);
 }
 </pre>
-
-@@SECTION Tutorial.VariableScope External Variables and Scope
