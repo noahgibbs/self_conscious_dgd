@@ -20,20 +20,8 @@ float = /[0-9]+[eE][-+]?[0-9]+/						\
 whitespace = /([ \t\v\f\r\n]|\\/\\*([^*]*\\*+[^/*])*[^*]*\\*+\\/)+/	" +
 "\
 Program: Inherits TopLevelDecls				? program	\
-Inherits: InheritList					? list		\
-InheritList:								\
-InheritList: InheritList Inherit					\
 Inherit: OptPrivate 'inherit' OptLabel OptObject StringExp ';'		\
 							? inh		\
-OptPrivate:						? false		\
-OptPrivate: 'private'					? true		\
-OptLabel:						? opt		\
-OptLabel: ident								\
-OptObject:								\
-OptObject: 'object'					? empty		\
-TopLevelDecls: TopLevelDeclList				? list		\
-TopLevelDeclList:							\
-TopLevelDeclList: TopLevelDeclList TopLevelDecl				\
 TopLevelDecl: DataDecl							\
 TopLevelDecl: FuncDecl							" +
 "\

@@ -2,6 +2,14 @@
 
 Frankly, DGD isn't likely to surprise you in this category if you're used to languages descended from C syntax, as most general-purpose modern languages are (e.g. Java, C++, C#, JavaScript, Perl/Ruby/Python.)
 
+Let's do one quick chapter of all the control flow operators, as sample code.
+
+If this were a book for new programmers, I could then go into a full reference section with all the constant syntaxes, data types, operator precedence...
+
+You know who gets overwhelmed by that and gets very little value out of it? New programmers. You know who doesn't really need it? Old programmers.
+
+There are more reference chapters later in the book. If you're one of the three people that ***really want*** all the tiny details before getting any of the interesting stuff that's different about this language, you can go read them now and come back. I'll wait.
+
 ## For Loops
 
 A for loop in LPC uses parentheses around three clauses separated by semicolons. Here's one way that can look:
@@ -68,7 +76,7 @@ static void create(varargs int clone)
 
 ## Each/Foreach?
 
-Nope. We'll cover iterating over arrays and hashes later, but it's going to be with a for loop.
+Nope. We'll cover iterating over arrays and mappings (hashes) later, but it's going to be with a for loop.
 
 ## If/Else
 
@@ -213,4 +221,3 @@ static void create(varargs int clone)
 If the code inside runs for too long or tries to call too many layers of sub-functions, DGD will raise an error. This is useful for "sandboxing" code and making sure it doesn't use up too many resources. Not surprisingly, DGD will sandbox ***you*** when you're running code. That way a single infinite loop in a "code" command won't halt the whole application.
 
 If you make the rlimits numbers above much smaller, like 10 and 10, you'll instead see an "Out of ticks" message. That means trying to send you a message cost more than 10 ticks and got an error. You didn't catch the error so it just showed up on the telnet connection.
-

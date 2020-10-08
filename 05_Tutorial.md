@@ -25,7 +25,7 @@ There's obviously a lot more to the DGD configuration file. In a later chapter w
 
 Once you've done these things, you'll have a bootable app that does nothing. Let's make it do something simple, just to be sure it works.
 
-You'll need to add a file called "usr/System/initd.c", using your text editor of choice.
+You'll need to add a file called "usr/System/initd.c" using your text editor of choice.
 
 Initially, put this into the file:
 
@@ -39,7 +39,7 @@ Now run your new micro-app:
 
     dgd start.dgd
 
-Hit control-c to stop it again, and check for a new file: root/log.txt. Inside, it should say "DGD started up successfully."
+Hit control-c to stop it again, and check for a new file: root/log.txt. Inside it should say "DGD started up successfully."
 
 You've now written your first little "hello, world" bit of DGD code. Luckily a lot of the above was just boilerplate and things will get easier from here.
 
@@ -162,3 +162,9 @@ You don't have to cd into the directory every time. But unfortunately, you ***wi
 Aren't there better ways? Definitely. But they all involve writing more code. We'll talk more about that later.
 
 For now we'll do it this way.
+
+## Future Notes
+
+This tutorial section should be a lot more extensive. We should set up some kind of more reasonable code reloading. We should use more of DGD's features.
+
+That's a lot of the value of this section. But it also needs solid reference chapters to back it up. So I'll write those, then come back here and do this right.
