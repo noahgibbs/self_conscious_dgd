@@ -179,17 +179,80 @@ $27 = 4
 
 There are expected operators like < or >, or <= or >= for numbers. They can also check strings. You can't compare an integer to a float without a typecast.
 
-Relational operators return 1 or 0 for true or false. Logical operators take true or false values and do what you're used to - true && true is true, etc.
+Relational operators return 1 or 0 for true or false. Logical operators take true or false values and do what you're used to - true && true is true, false || true is true, false && true is false, etc.
+
+You can play funny games with the operator precedence here &mdash; "and" logical operators bind tighter than "or", for instance. The comparison operators like <= bind tigher than either one. That lets you write some common logical idioms (the or-of-ands notation for instance) very easily, while others need more parentheses than you might expect. When in doubt, add parentheses.
 
 ## Type Conversions
 
+You can put the name of a type into parentheses in front of a value to ask DGD to convert it to another type. For instance, `(int)37.1` will give you the integer 37.
+
+Be careful - rounding floats, in particular, will round them to ***the closest integer***, so rounding `(int)37.6` will actually give you 38, not 37. This is probably not what you're used to in other languages.
+
+Obviously you can typecast between float and int pretty freely.
+
+You can't typecast a nil value into anything non-nil. You can't cast an array or mapping to a number or string.
+
+You can cast an int or float to a string.
+
+When in doubt, experiment. But when in doubt, also assume DGD is fairly fussy about typecasts. It won't turn something into something else randomly. And it will nearly never change type "randomly" without being asked, even between ints and floats.
+
 ## Increment and Decrement Operators
+
+DGD implements the C-style ++ and -- operators for increment (add one) and decrement (subtract one), respectively. You can put them before or after a variable name to change the value of the variable.
+
+```
+++count; /* Add one to the value of count */
+--count; /* Subtract one from the value of count */
+count++; /* Add one to the value of count */
+count--; /* Subtract one from the value of count */
+```
+
+These operators work on both integer and floating-point variables.
 
 ## Bitwise Operators
 
+You may be used to C-style (and/or JavaScript-style, Ruby-style, Java-style, Python-style...) bitwise operators which treat an integer as an array of bits and operate on each bit, or each pair of bits.
+
+If not, I'd recommend [looking them up to get a feel for them](https://en.wikipedia.org/wiki/Bitwise_operation). DGD, like many languages, implements them.
+
+They include:
+
+* Binary bitwise "and" - &
+* Binary bitwise "or" - |
+* Binary bitwise "xor" - ^
+
 ## Assignment Operators and Expressions
 
+DGD does, of course, let you assign to variables. The assignment also returns a value so that you can do multiple assignment. For instance:
+
+```
+# code { int a, b; a = b = 14; return a + b; }
+$11 = 28
+```
+
+Another common idiom is to assign to a variable and perform an "if" clause it's true:
+
+```
+int error_code;
+
+if (error_code = my_function()) {
+    error("This function returned an error!");
+}
+
+/* ...otherwise do this... */
+```
+
 ## Conditional Expressions
+
+DGD has the ternary (three-argument) conditional, often called the "question-mark-colon operator." It's basically a compressed if/then/else statement.
+
+For example:
+
+```
+# code (1 == 0) ? "sam" : "bob"
+$10 = "bob"
+```
 
 ## Precedence and Order of Evaluation
 
