@@ -7,18 +7,20 @@ An Introduction to DGD:
 * [A Tutorial and Introduction](05_Tutorial.md)
 * [DGD, Old Tools and Convenience](06_Convenience.md)
 
-How Can I Use DGD?
+What Else Does DGD Do?
 
 * [DGD and Paths](10_Paths.md)
 * [Types of Objects](11_ObjectTypes.md)
 * [Functions and Program Structure](12_ProgramStructure.md)
-* Atomic Functions and How to Use Them
+* [Inheritance](13_Inheritance.md)
+* [Atomic Functions and How to Use Them](15_Atomic.md)
 * [What's Unexpected?](18_Unexpected.md)
 
 Configuring DGD and the Kernel
 
 * [The Auto and Driver Objects](20_AutoDriver.md)
 * The Object Manager
+* [The Error Manager](23_ErrorManager.md)
 * The Configuration File
 * Networks, Connections and Users
 
