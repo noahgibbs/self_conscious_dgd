@@ -6,7 +6,6 @@ LPCCode compile(string source)
     mixed *parsed;
 
     parsed = parse_string("\
-ident = /[a-zA-Z_][a-zA-Z_0-9]*/					\
 simple_string = /\"[^\"\\\\\n]*\"/					\
 complex_string = /\"([^\"\\\\\n]|\\\\.)+\"/				\
 simple_char = /'[^'\\\\\n]+'/						\
@@ -61,26 +60,6 @@ StarList: StarList '*'							" +
 "\
 FunctionName: ident							\
 FunctionName: Operator					? concat	\
-Operator: 'operator' '+'						\
-Operator: 'operator' '-'						\
-Operator: 'operator' '*'						\
-Operator: 'operator' '/'						\
-Operator: 'operator' '%'						\
-Operator: 'operator' '&'						\
-Operator: 'operator' '^'						\
-Operator: 'operator' '|'						\
-Operator: 'operator' '<'						\
-Operator: 'operator' '>'						\
-Operator: 'operator' '>='						\
-Operator: 'operator' '<='						\
-Operator: 'operator' '<<'						\
-Operator: 'operator' '>>'						\
-Operator: 'operator' '~'						\
-Operator: 'operator' '++'						\
-Operator: 'operator' '--'						\
-Operator: 'operator' '[' ']'						\
-Operator: 'operator' '[' ']' '='					\
-Operator: 'operator' '[' '..' ']'					" +
 "\
 FunctionDcltr: Stars FunctionName '(' Formals ')'			\
 Dcltr: DataDcltr					? list		\
@@ -111,104 +90,6 @@ CompositeString: StringExp						\
 CompositeString: CompositeString '+' StringExp		? stringExp	\
 StringExp : String							\
 StringExp: '(' CompositeString ')'			? parsed_1_	" +
-"\
-Exp1: decimal						? expIntDec	\
-Exp1: octal						? expIntOct	\
-Exp1: hexadecimal					? expIntHex	\
-Exp1: simple_char					? simpleChar	\
-Exp1: complex_char					? complexChar	\
-Exp1: float						? expFloat	\
-Exp1: 'nil'						? expNil	\
-Exp1: String								\
-Exp1: '(' '{' OptArgListComma '}' ')'			? expArray	\
-Exp1: '(' '[' OptAssocListComma ']' ')'			? expMapping	\
-Exp1: ident						? expVar	\
-Exp1: '::' ident					? expGlobalVar	\
-Exp1: '(' ListExp ')'					? parsed_1_	\
-Exp1: FunctionCall '(' OptArgList ')'			? expFuncall	\
-Exp1: 'catch' '(' ListExp ')'				? expCatch	\
-Exp1: 'new' OptObject StringExp				? expNew1	\
-Exp1: 'new' OptObject StringExp '(' OptArgList ')'	? expNew2	\
-Exp1: Exp2 '->' ident '(' OptArgList ')'		? expCallOther	\
-Exp1: Exp2 '<-' StringExp				? expInstance	" +
-"\
-Exp2: Exp1								\
-Exp2: Exp2 '[' ListExp ']'				? expIndex	\
-Exp2: Exp2 '[' ListExp '..' ListExp ']'			? expRange	" +
-"\
-PostfixExp: Exp2							\
-PostfixExp: PostfixExp '++'				? expPostIncr	\
-PostfixExp: PostfixExp '--'				? expPostDecr	" +
-"\
-PrefixExp: PostfixExp							\
-PrefixExp: '++' CastExp					? expPreIncr	\
-PrefixExp: '--' CastExp					? expPreDecr	\
-PrefixExp: '+' CastExp					? expPlus	\
-PrefixExp: '-' CastExp					? expMinus	\
-PrefixExp: '!' CastExp					? expNot	\
-PrefixExp: '~' CastExp					? expNegate	" +
-"\
-CastExp: PrefixExp							\
-CastExp: '(' ClassType Stars ')' CastExp		? expCast	" +
-"\
-MultExp: CastExp							\
-MultExp: MultExp '*' CastExp				? expMult	\
-MultExp: MultExp '/' CastExp				? expDiv	\
-MultExp: MultExp '%' CastExp				? expMod	" +
-"\
-AddExp: MultExp								\
-AddExp: AddExp '+' MultExp				? expAdd	\
-AddExp: AddExp '-' MultExp				? expSub	" +
-"\
-ShiftExp: AddExp							\
-ShiftExp: ShiftExp '<<' AddExp				? expLShift	\
-ShiftExp: ShiftExp '>>' AddExp				? expRShift	" +
-"\
-RelExp: ShiftExp							\
-RelExp: RelExp '<' ShiftExp				? expLess	\
-RelExp: RelExp '>' ShiftExp				? expGreater	\
-RelExp: RelExp '<=' ShiftExp				? expLessEq	\
-RelExp: RelExp '>=' ShiftExp				? expGreaterEq	" +
-"\
-EquExp: RelExp								\
-EquExp: EquExp '==' RelExp				? expEqual	\
-EquExp: EquExp '!=' RelExp				? expUnequal	" +
-"\
-BitandExp: EquExp							\
-BitandExp: BitandExp '&' EquExp				? expAnd	" +
-"\
-BitxorExp: BitandExp							\
-BitxorExp: BitxorExp '^' BitandExp			? expXor	" +
-"\
-BitorExp: BitxorExp							\
-BitorExp: BitorExp '|' BitxorExp			? expOr		" +
-"\
-AndExp: BitorExp							\
-AndExp: AndExp '&&' BitorExp				? expLand	" +
-"\
-OrExp: AndExp								\
-OrExp: OrExp '||' AndExp				? expLor	" +
-"\
-CondExp: OrExp								\
-CondExp: OrExp '?' ListExp ':' CondExp			? expQuest	" +
-"\
-Exp: CondExp								\
-Exp: CondExp '=' Exp					? expAssign	\
-Exp: CondExp '+=' Exp					? expAsgnAdd	\
-Exp: CondExp '-=' Exp					? expAsgnSub	\
-Exp: CondExp '*=' Exp					? expAsgnMult	\
-Exp: CondExp '/=' Exp					? expAsgnDiv	\
-Exp: CondExp '%=' Exp					? expAsgnMod	\
-Exp: CondExp '<<=' Exp					? expAsgnLShift	\
-Exp: CondExp '>>=' Exp					? expAsgnRShift	\
-Exp: CondExp '&=' Exp					? expAsgnAnd	\
-Exp: CondExp '^=' Exp					? expAsgnXor	\
-Exp: CondExp '|=' Exp					? expAsgnOr	" +
-"\
-ListExp: Exp								\
-ListExp: ListExp ',' Exp				? expComma	\
-OptListExp:						? opt		\
-OptListExp: ListExp							" +
 "\
 ArgList: Exp								\
 ArgList: ArgList ',' Exp						\

@@ -133,26 +133,6 @@ This would allow the create() function to call get_hostname(), even though get_h
 
 ## Function Definitions
 
-### Static
-
-A static function can only be called inside the object it is defined in. That includes inherited objects &mdash; it can be seen by its parent or child objects. But it's effectively invisible from outside the object itself.
-
-It can be masked by an inheriting program.
-
-### Private
-
-A private function can only be seen or called from inside the object it is defined in, ***not*** including parent or child objects. It can't be masked. It can't be called from another outside object.
-
-### Nomask
-
-A nomask function can't be masked. In other words, an object that inherits from this object can't declare another function with the same name to replace it. Attempting to define a masking function is a compile error.
-
-### Atomic
-
-An atomic function will have no effects if it is aborted by an error. Network I/O, file I/O and global variable writes will all be reversed if they occurred inside an atomic function and an error is then raised. Certain operations are not permitted inside an atomic function. Atomic functions use more processor and memory resources. They cost double the normal number of ticks when they run inside rlimits().
-
-For more about atomic functions, see a later chapter. They're one of the most powerful features of DGD, but they can be tricky to use well. In effect, they are database transactions for the language itself.
-
 ### Create()
 
 If a singleton or cloneable program has a create() method, it will be called when that program gets a function called. If you're using the Kernel Library, that normally means immediately upon creation.
