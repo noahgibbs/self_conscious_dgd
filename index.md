@@ -4,16 +4,17 @@ An Introduction to DGD:
 * [History of DGD](02_History.md)
 * [Setting up DGD](03_SettingUpDGD.md)
 * [Why DGD?](04_WhyDGD.md)
-* [A Tutorial and Introduction](05_Tutorial.md)
+* [A Quick Tutorial and Introduction](05_Tutorial.md)
 * [DGD, Old Tools and Convenience](06_Convenience.md)
 
-What Else Does DGD Do?
+What Kinds of Things Does DGD Do?
 
 * [DGD and Paths](10_Paths.md)
 * [Types of Objects](11_ObjectTypes.md)
 * [Functions and Program Structure](12_ProgramStructure.md)
 * [Inheritance](13_Inheritance.md)
 * [Atomic Functions and How to Use Them](15_Atomic.md)
+* [Ticks, Stack and rlimits](16_Rlimits.md)
 * [What's Unexpected?](18_Unexpected.md)
 
 Configuring DGD and the Kernel
