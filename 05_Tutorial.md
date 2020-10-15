@@ -132,7 +132,7 @@ You can build all sorts of things for that purpose. But right now you want somet
 
 You'd also like to be able to do console output without writing anything specific to do that. Here's what we'll do for these tutorial chapters. It's a bad idea for a real production app, but that's fine.
 
-We'll make an object under /usr/System and compile it. That will run its "create()" method.
+We'll make an object under /usr/System and compile it. That will run its "create()" function.
 
 For instance, go ahead and create an object called root/usr/System/obj/example.c. Here's what we'll put in it:
 

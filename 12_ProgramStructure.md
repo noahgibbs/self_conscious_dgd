@@ -135,7 +135,7 @@ This would allow the create() function to call get_hostname(), even though get_h
 
 ### Create()
 
-If a singleton or cloneable program has a create() method, it will be called when that program gets a function called. If you're using the Kernel Library, that normally means immediately upon creation.
+If a singleton or cloneable program has a create() function, it will be called when that program gets a function called. If you're using the Kernel Library, that normally means immediately upon creation.
 
 Create() will be called with no arguments for a cloneable parent object or for a singleton. It will be called with the integer 1 as the only argument for a cloned object.
 

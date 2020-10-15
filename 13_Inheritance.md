@@ -32,9 +32,9 @@ private inherit tls /kernel/lib/api/tls;
 
 By default, DGD calls create() on a newly-used object, often right after it's created. But that doesn't necessarily handle everything when it comes to inheritance.
 
-If your object inherits from more that one parent, for instance, you may have more than one create() method that wants calling. You'll need to write that into your create() function.
+If your object inherits from more that one parent, for instance, you may have more than one create() function that wants calling. You'll need to write that into your object's create() function.
 
-Why not do it automatically? Partly it's hard to be sure that "call all the create methods first" is the right order. By having you call them manually, DGD makes sure you have the opportunity to do things both before and after an inherited class's create, and that you can decide what order to call create() in the various inherited parents.
+Why not do it automatically? Partly it's hard to be sure that "call all the create functions first" is the right order. By having you call them manually, DGD makes sure you have the opportunity to do things both before and after an inherited class's create, and that you can decide what order to call create() in the various inherited parents.
 
 If you inherit from three or four different parents, that's a great reason to give each of them a name in the inherit statement. That makes it easier to call each one's create in turn:
 
