@@ -40,6 +40,12 @@ Anything that isn't disallowed gets reverted. So how do you store information ab
 
 Part of the answer is "you don't." There's no special not-affected-by-atomic state that you can write to, just like a database doesn't normally keep special "non-transaction-able" table rows.
 
-But in a practical sense you can put anything you want into the string DGD passes to "error." That lets you pass other data (e.g. stack trace, internal state) encoded into that string, and your error manager can decode it on the other side.
+But in a practical sense you can put anything you want into the string DGD passes to "error." That lets you pass other data (e.g. stack trace, internal state) encoded into that string, and your error manager can decode it on the other side. But then, DGD has a maximum string length, which can limit the amount of information that can be retrieved...
 
-It's possible to overflow the string length and not be able to pass everything you want that way, so be careful. But it ***is*** basically possible to pass information that way, and it's the only way to get information out from a failed atomic call.
+## Driver::atomic_error
+
+All this encoding and decoding could be inconvenient, so the Cloud Server added a method to do it more automatically: send_atomic_message and retrieve_atomic_messages. Under the hood it works a lot like the above: collect atomic messages inside an atomic function call. Then if an error occurs, the messages can be encoded with the original error string and passed out to the surrounding context. The send_atomic_message method takes a string to be passed outward, and retrieve_atomic_messages gets any and all messages that were passed from inside.
+
+This method is used in the Cloud Server to do atomic compilation of objects but pass compilation errors out to the surrounding context if it fails.
+
+Underneath, this is accomplished because the driver object can replace the error string for atomic_error and runtime_error. That way, atomic error strings are replaced with their encoded version, while the runtime_error generated ***outside*** the atomic context is replaced by its decoded version.
