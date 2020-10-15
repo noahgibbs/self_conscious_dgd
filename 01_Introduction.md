@@ -33,3 +33,13 @@ If you learn DGD before that, you can be one of those smug, annoying old program
 You know Javascript prototype inheritance? LPC was doing it before the rest of the world. Dynamic code reloading? DGD did it before Rails made it common. It had an extensive type-based directory structure before Java and Rails stole that trick. DGD still has a few tricks yet to be stolen. Atomic functions? Somebody will steal them. Caller- and object-name-based security? It'll happen. Full twenty-year-plus persistence? DGD's not the only contender, but nobody's ever made it popular.
 
 You can be the smug grognard for ***those*** features... If you learn now.
+
+## Relatives
+
+DGD's vision isn't likely to be entirely unique, especially as interesting features get stolen over the years. What are its relatives?
+
+Its unusual execution model has a lot in common with Node.js, and a little with in-browser JavaScript.
+
+Its sandboxing is a bit JavaScript-like. Its self-sandboxing through rewriting and recompilation is a bit like Ruby and a bit like CommonLISP macros.
+
+Its limited data-type sizes and careful resource-counting isn't much like most general-purpose languages. If you've used the SalesForce approximation of Java and/or dotNet called Apex, it's a bit like that. Counting resources at a very granular level is uncommon, and DGD doesn't have much company in how it does so.
