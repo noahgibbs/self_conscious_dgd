@@ -8,7 +8,7 @@ DGD's particular innovation was to treat LPC as a generic language more than a g
 
 ## MUDs and Commercial Use
 
-There have been a few traditional-style LPMuds built on DGD over the years, most prominently one called Xyllomer. Since they never used a DGD-specific layer like the Kernel Library, they were unable to use some of DGD's most powerful features, like full recompile-in-place persistence.
+There have been a few traditional-style LPMuds built on DGD over the years, most prominently one called Xyllomer. Since they never used a DGD-specific layer like the Kernel Library or Cloud Server, they were unable to use some of DGD's most powerful features, like full recompile-in-place persistence.
 
 There have also been a few experimental DGD-specific game libraries such as my own (now long-defunct) Phantasmal MUDLib. None of them ever got used for a game with more users than you have fingers as far as I know.
 

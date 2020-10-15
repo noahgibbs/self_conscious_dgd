@@ -17,7 +17,7 @@ What Kinds of Things Does DGD Do?
 * [Ticks, Stack and rlimits](16_Rlimits.md)
 * [What's Unexpected?](18_Unexpected.md)
 
-Configuring DGD and the Kernel
+Configuring DGD and the Cloud Server
 
 * [The Auto and Driver Objects](20_AutoDriver.md)
 * The Object Manager
@@ -40,7 +40,7 @@ Language Reference:
 
 Lastly:
 
-* Running Without the Kernellib
+* Running Without the Cloud Server (or Kernel Library)
 
 
 

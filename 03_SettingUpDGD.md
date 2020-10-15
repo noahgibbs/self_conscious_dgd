@@ -46,26 +46,26 @@ Now that you have dgd in your path, let's make sure it worked.
 
 DGD doesn't ship with any runnable DGD applications. You're going to need to make one.
 
-Luckily, the Kernel library fixes this problem: it's runnable out of the box. Next to where you cloned DGD, let's clone the Kernel library:
+Luckily, the Cloud Server fixes this problem: it's runnable out of the box. Next to where you cloned DGD, let's clone the Cloud Server:
 
-    git clone https://github.com/ChatTheatre/kernellib.git
+    git clone https://github.com/dworkin/cloud-server.git
 
-Once you have it cloned, go to kernel.dgd and change its "directory" property to "src".
+Once you have it cloned, change into its directory. Then go to cloud.dgd and change its "directory" property to "src".
 
 Now, run it with dgd:
 
-    dgd kernel.dgd
+    dgd cloud.dgd
 
 You should see text indicating that a server is running:
 
 ```
-Noahs-MBP-2:kernellib noah$ ../dgd/bin/dgd kernel.dgd
+Noahs-MBP-2:cloud-server noah$ ../dgd/bin/dgd cloud.dgd
 Sep 27 13:28:31 ** DGD 1.6.13
 Sep 27 13:28:31 ** Initializing...
 Sep 27 13:28:31 ** Initialization complete.
 ```
 
-You have a functioning installation of DGD. Now you just have to learn how to use it!
+You have a functioning installation of DGD. Now you just have to learn how to use it in later chapters!
 
 (Hit control-C to interrupt the program.)
 
@@ -87,8 +87,8 @@ Windows has a telnet client called ["PuTTY"](https://www.putty.org) that works w
 
 Windows 10 also has a specific telnet feature which can be enabled. Google for "Windows 10: Enabling Telnet Client." Your own version of windows might have some system version of telnet as well.
 
-## What Is the Kernel Library?
+## What Is the Cloud Server?
 
 DGD has a bunch of weird, interesting features. Many of them require a bunch of extra infrastructure to manage properly. You can build it all yourself. Or you can use a structure that handles it. There are a lot of possible structures that ***could*** handle it, and DGD would like you to be able to use any of them.
 
-But there's a specific, common way to handle most of it that you can just put in place and use. It's called the Kernel Library (or Kernellib or Kernel MUDLib.) There's also a closely-related later version called the Cloud Server which is the Kernel Library plus some extra functionality. Most of this book assumes you're happy using the Kernel Library or the Cloud Server. There will be a chapter toward the end that explains what raw DGD is like without it.
+But there's a specific, common way to handle most of it that you can just put in place and use. The old version is called the Kernel Library (or Kernellib or Kernel MUDLib.) There's also a later version called the Cloud Server which is the Kernel Library plus extra functionality. Most of this book assumes you're happy using the Cloud Server. There's a chapter toward the end that explains what raw DGD is like without it.

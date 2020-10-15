@@ -12,7 +12,7 @@ The locations DGD will check for files to include are defined in the Configurati
 
 LPC has two types of includes. One uses angle brackets, while the other uses double-quotes. When including, DGD checks the normal set of include directories to find the file it was told to look for. The only difference with double-quotes is that DGD will first check the absolute path given and ***then*** check in the include directories.
 
-Why do you care about double-quotes versus angle brackets? Usually, they're mostly used idiomatically - angle-bracket include is often for things like the Kernel Library's own files, indicating they are "system" files, while double-quote includes are mostly used for headers from your own application.
+Why do you care about double-quotes versus angle brackets? Usually, they're mostly used idiomatically - angle-bracket include is often for things like the Cloud Server's own files, indicating they are "system" files, while double-quote includes are mostly used for headers from your own application.
 
 ## if, else, elif, endif
 

@@ -4,9 +4,9 @@ Object inheriting from other objects can be a bit complicated. Let's talk about 
 
 ## Limitations Due to Persistence
 
-In the Kernel Library (or the Cloud Server,) a base class is always an ***abstract*** base class. To put that another way, if you can inherit from an object then you can't clone (instantiate) it. You're also not allowed to get a reference to the object or call functions on it directly. That's usually allowed in DGD. You can do it with cloneable objects, but not inheritable objects.
+In the Cloud Server, a base class is always an ***abstract*** base class. To put that another way, if you can inherit from an object then you can't clone (instantiate) it. You're also not allowed to get a reference to the object or call functions on it directly. That's usually allowed in DGD. You can do it with cloneable objects, but not inheritable objects.
 
-That's because objects can hold data fields in the Kernel Library. DGD wants parent classes to always be easy to recompile any time. And that would destroy whatever data they held. So: they're abstract base classes and hold no data, so they can be recompiled at any time.
+That's because objects can hold data fields in the Cloud Server. DGD wants parent classes to always be easy to recompile any time. And that would destroy whatever data they held. So: they're abstract base classes and hold no data, so they can be recompiled at any time.
 
 That's not to say there are no interesting problems with recompiling: if an base class is recompiled, abstract or not, then all the child objects that inherited from it can also change. You'll learn more about that when you read about the Object Manager.
 

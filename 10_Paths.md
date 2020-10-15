@@ -12,7 +12,7 @@ A path on your computer might be something like "/Users/noah/src/lpc_playground/
 
 ## The Home Directory
 
-The Kernel Library adds a tilde-path feature, a lot like one you've used in your OS console.
+The Cloud Server adds a tilde-path feature, a lot like one you've used in your OS console.
 
 A file in /usr/System/initd.c might be referred to as ~System/initd.c. If you're currently the user "admin" then you could refer to /usr/admin/sys/my_mgr.c as ~/sys/my_mgr.c. Not that tilde-usename means it's in that user's directory, while tilde-slash means "it's under ***my*** home directory."
 
@@ -20,4 +20,4 @@ A file in /usr/System/initd.c might be referred to as ~System/initd.c. If you're
 
 You can keep track of a current directory (or multiple.) But DGD won't mostly do it for you - you have to do it for yourself.
 
-The exception to this is that the Kernel Library (or Cloud Server) wiztool has an idea of the current directory if you inherit from it.
+The exception to this is that the Cloud Server wiztool has an idea of the current directory if you inherit from it.

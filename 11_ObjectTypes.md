@@ -20,11 +20,11 @@ The create() function gets an argument that we've been calling "is_clone." If it
 
 A clone (either a parent or an instance) can always be looked up by name. DGD won't ever automatically destruct them, because the name acts as a sort of automatic top-level reference to them. They can be destructed manually, of course.
 
-The Kernel Library has automatic per-owner tracking of cloneables, including both parents and instances. So a sufficiently-privileged object can get a full list of all of them that exist.
+The Cloud Server has automatic per-owner tracking of cloneables, including both parents and instances. So a sufficiently-privileged object can get a full list of all of them that exist.
 
 ## Libraries, a.k.a. "Inheritables"
 
-One of the major purposes of the Kernel Library is to separate out inheritable libraries from cloneables. You may remember me mentioning that when talking about persistence and dynamic code upgrades.
+One of the major purposes of the Cloud Server is to separate out inheritable libraries from cloneables. You may remember me mentioning that when talking about persistence and dynamic code upgrades.
 
 To phrase this like a different language would: in DGD, all base classes are ***abstract base classes***. They can't be instantiated. They may have data fields that a ***concrete*** child class will use. But if a program can be inherited then it can't be instantiated ("cloned.")
 
@@ -32,7 +32,7 @@ An inheritable object will have /lib/ in its name, and will not have /obj/ or /d
 
 You can never get a reference to a library object. They exist internally, but you're not allowed to touch them. You can't call functions on them, for instance. If you did, DGD would need to create that object and give it those internal data fields. Instead, you're not allowed to ever get a reference to one of them and they act as if they were pure code with no data attached.
 
-Libraries can be destructed as part of reloading them with new code. But the Kernel Library is very careful not to allow outdated code to stick around. You ***can*** destroy them, but you'd normally only do it as part of a destroy-and-reload operation to update code.
+Libraries can be destructed as part of reloading them with new code. But the Cloud Server is very careful not to allow outdated code to stick around. You ***can*** destroy them, but you'd normally only do it as part of a destroy-and-reload operation to update code.
 
 ## Lightweight Objects (LWOs)
 
@@ -66,6 +66,6 @@ Similarly, names with a hash sign and a number (clones, LWOs) aren't optional. Y
 
 ## Object Life Cycle
 
-When an object is created, its create() method will be called if it has one. If you have an object manager in place (see object management) then you can add other "hooks" into the object life cycle. It's common to add a method name that gets called when an object is recompiled, for instance.
+When an object is created, its create() method will be called if it has one. If you have an object manager in place (see object management) then you can add other "hooks" into the object life cycle. It's common to add a method name that gets called when an object is recompiled, for instance &mdash; the Cloud Server calls this method "patch".
 
-Similarly, it's possible to create your own destructors. But neither DGD nor the Kernel Library puts that in place by itself.
+Similarly, it's possible to create your own destructors. But neither DGD nor the Cloud Server puts that in place by itself.
