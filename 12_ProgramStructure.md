@@ -9,7 +9,7 @@ The earlier chapters had only extremely simple programs. Let's look at some more
 Here's an excerpt of an example object for you to look over. The rest of this chapter will explore the kinds of code you see here, what it does and how it works.
 
 ```
-/* ~System/initd.c */
+/* ~System/sys/memoryd.c */
 
 # include <status.h>
 
