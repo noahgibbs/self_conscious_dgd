@@ -218,6 +218,4 @@ static void create(varargs int clone)
 }
 ```
 
-If the code inside runs for too long or tries to call too many layers of sub-functions, DGD will raise an error. This is useful for "sandboxing" code and making sure it doesn't use up too many resources. Not surprisingly, DGD will sandbox ***you*** when you're running code. That way a single infinite loop in a "code" command won't halt the whole application.
-
-If you make the rlimits numbers above much smaller, like 10 and 10, you'll instead see an "Out of ticks" message. That means trying to send you a message cost more than 10 ticks and got an error. You didn't catch the error so it just showed up on the telnet connection.
+See the Rlimits chapter for more details.
