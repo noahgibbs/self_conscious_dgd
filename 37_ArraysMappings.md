@@ -50,7 +50,7 @@ int *a;
 int *b;  /* Clearly an array. */
 ```
 
-Remember that all variables must be declared at the beginning of their block (which may be the start of a function.)
+Remember that all variables must be declared at the beginning of their block, which may be the start of a function.
 
 ## KFuns
 
@@ -159,7 +159,7 @@ The most straightforward way to add to a mapping is to assign to a new element.
 $19 = ([ "fred":2, "jim":1, "john":9, "sam":3 ])
 ```
 
-You can also add two mappings. Remember that you can't have multiple values for the same key. If there are duplicate keys, one will overwrite the other.
+You can also add two mappings with the "+" operator, or add into a mapping with "+=". Remember that you can't have multiple values for the same key. If there are duplicate keys, one will overwrite the other.
 
 ## Adding to Arrays
 
@@ -170,7 +170,7 @@ You can use the += operator to add a new item to the end of an existing array.
 $20 = ({ 0, 0, 0, 0, 9, 8, 1 })
 ```
 
-The + operator will concatenate two arrays. It's also possible to allocate a very long array using the allocate() family of kfuns.
+The + operator will concatenate two arrays. It's also possible to allocate a very long array using the allocate() family of kfuns and copy the shorter array over top of it with a for() loop.
 
 ## Subtracting from Arrays and Mappings
 
@@ -181,11 +181,64 @@ If you assign nil to an item in a mapping, it will be deleted:
 $11 = ([ "b":2 ])
 ```
 
-You can also subtract a single-element array from the mapping, containing the key to be deleted.
+You can also subtract an array from the mapping, containing the key or keys to be deleted.
 
 ## Array-Slices
 
+In DGD, as in many languages, you can take a "slice" of an array -- a shorter array from inside a longer array. For instance, the array-slice `arr[1..4]` grabs the second through fifth elements of the array, assuming all of them exist. You can also leave off the first and/or last index to start from the beginning or end of the list.
+
+DGD does ***not*** use negative offsets to count from the end of the list. For instance, -1 does not mean the index at the end of the array, but instead means one index before the beginning of the array. That element is, of course, not present.
+
+The array-slice is a copy of the array. Using neither a beginning nor end index in an array-slice is thus a simple idiom for "make me a copy of this array." The elements inside the array aren't copied &mdash; that is, it's a "shallow copy," not a "deep copy."
+
+```
+# code { int *a; a = ({ 6, 7, 8, 9, 10, 11 }); return a[0..1]; }
+$0 = ({ 6, 7 })
+# code { int *a; a = ({ 6, 7, 8, 9, 10, 11 }); return a[0..-1]; }
+$1 = ({ })
+# code { int *a; a = ({ 6, 7, 8, 9, 10, 11 }); return a[2..]; }
+$2 = ({ 8, 9, 10, 11 })
+# code { int *a; a = ({ 6, 7, 8, 9, 10, 11 }); return a[..5]; }
+$3 = ({ 6, 7, 8, 9, 10, 11 })
+# code { int *a; a = ({ 6, 7, 8, 9, 10, 11 }); return a[..]; }
+$4 = ({ 6, 7, 8, 9, 10, 11 })
+```
+
 ## Mapping-Slices
+
+You can take slices of mappings, too. This is most obviously useful when you use integers as your keys:
+
+```
+# code { mapping a; a = ([ 6: 7, 8: 9, 10: 11, 12: 13 ]); return a[..]; }
+$5 = ([ 6:7, 8:9, 10:11, 12:13 ])
+# code { mapping a; a = ([ 6: 7, 8: 9, 10: 11, 12: 13 ]); return a[ 6..8]; }
+$6 = ([ 6:7, 8:9 ])
+# code { mapping a; a = ([ 6: 7, 8: 9, 10: 11, 12: 13 ]); return a[ 6..10 ]; }
+$7 = ([ 6:7, 8:9, 10:11 ])
+```
+
+The slice checks the values of the keys, not the order in the code:
+
+```
+# code { mapping a; a = ([ 10: 11,12: 13, 6: 7, 8: 9 ]); return a[ 6..10 ]; }
+$9 = ([ 6:7, 8:9, 10:11 ])
+```
+
+Notice that the same idiom for "make a copy" works with mappings as arrays.
+
+You can also use string keys and take slices of your mappings:
+
+```
+# code { mapping a; a = ([ "a": 1, "apple": 2, "aardvark": 3, "b": 4, "biscuit": 5, "c": 6, "zebra": 100 ]); return a["apple".."biscuit"]; }
+$8 = ([ "apple":2, "b":4, "biscuit":5 ])
+```
+
+If you use more complex keys like objects or mappings, I wouldn't normally suggest using slices except to make a copy. Ordering is easiest for integers and strings. Remember that you can use the code command to check things like string ordering:
+
+```
+# code "bob" < "b"
+$10 = 0
+```
 
 ## Keys in Mappings
 
@@ -223,5 +276,3 @@ If you need to store a larger array or mapping than is allowed by the compile-ti
 The idea, if you need it, is that if a single mapping can only have 32,000 items, nothing stops you from making a mapping-of-mappings to get far more. The same trick works with an array-of-arrays, mapping-of-arrays, etc.
 
 Ordinarily you're better off just using normal mappings and arrays until you need the larger object with more complexity.
-
-## Call-by-Reference and Threads
