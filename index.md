@@ -7,7 +7,7 @@ An Introduction to DGD:
 * [A Quick Tutorial and Introduction](05_Tutorial.md)
 * [DGD, Old Tools and Convenience](06_Convenience.md)
 
-What Kinds of Things Does DGD Do?
+What Unusual Things Does DGD Do?
 
 * [DGD and Paths](10_Paths.md)
 * [Types of Objects](11_ObjectTypes.md)
@@ -25,16 +25,15 @@ Configuring DGD and the Kernel
 * The Configuration File
 * Networks, Connections and Users
 
-Language Reference:
+An LPC Language Reference:
 
 * [Control Flow](30_ControlFlow.md)
 * Strings and String Handling
 * [Types, Operators and Expressions](32_Expressions.md)
 * [Functions](33_Functions.md)
 * Calling Functions on Yourself and Others
-* Call-By-Value and Call-By-Reference
 * [Arrays and Mappings](37_ArraysMappings.md)
-* [Addresses and References](38_AddressesReferences.md)
+* [Call-By-Value and Call-By-Reference](38_AddressesReferences.md)
 * [The Preprocessor](39_Preprocessor.md)
 * [Errors, Callers and Stack Traces](3A_ErrorsCallers.md)
 
