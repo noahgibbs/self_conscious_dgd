@@ -15,6 +15,7 @@ What Unusual Things Does DGD Do?
 * [Inheritance](13_Inheritance.md)
 * [Atomic Functions and How to Use Them](15_Atomic.md)
 * [Ticks, Stack and rlimits](16_Rlimits.md)
+* [Caller-Based Security](17_Security.md)
 * [What's Unexpected?](18_Unexpected.md)
 
 Configuring DGD and the Kernel
@@ -50,3 +51,4 @@ No current place in the outline:
 * Wiztool commands
 * DGD's Editor
 * parse_string
+* Cloud Server driver and auto objects - what do they provide?
