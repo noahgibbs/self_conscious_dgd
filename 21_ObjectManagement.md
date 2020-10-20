@@ -6,10 +6,10 @@ And historically, the Kernel Manager ships with no object manager at all. You'd 
 
 There have been several historical object managers for DGD.
 
-* Geir Harald Hanssen wrote one for his Ph.D. thesis about DGD
+* Geir Harald Hansen wrote one for an academic thesis about DGD
 * I wrote one for my Phantasmal MUD Library
 * Skotos.net wrote one for their games, called ProgDB
-* The Cloud Server's built-in object manager
+* The Cloud Server's built-in object manager is probably the first ever developed and was written by Erwin Harte long ago
 
 The fourth object manager is what you are currently using. You're allowed to override and replace it if you like.
 
