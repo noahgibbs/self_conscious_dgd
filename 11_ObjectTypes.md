@@ -66,6 +66,6 @@ Similarly, names with a hash sign and a number (clones, LWOs) aren't optional. Y
 
 ## Object Life Cycle
 
-When an object is created, its create() function will be called if it has one. If you have an object manager in place (see object management) then you can add other "hooks" into the object life cycle. It's common to add a function name that gets called when an object is recompiled, for instance.
+When an object is created, its create() function will be called if it has one. If you have an object manager in place (see object management) then you can add other "hooks" into the object life cycle. It's common to add a function name that gets called when an object is recompiled, for instance. The Cloud Server calls this method "patch".
 
-Similarly, it's possible to create your own destructors. But neither DGD nor the Kernel Library puts that in place by itself.
+Similarly, it's possible to create your own destructors using your object manager. But neither DGD nor the Cloud Server implements that.

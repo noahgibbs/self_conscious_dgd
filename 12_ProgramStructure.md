@@ -9,7 +9,7 @@ The earlier chapters had only extremely simple programs. Let's look at some more
 Here's an excerpt of an example object for you to look over. The rest of this chapter will explore the kinds of code you see here, what it does and how it works.
 
 ```
-/* ~System/initd.c */
+/* ~System/sys/memoryd.c */
 
 # include <status.h>
 
@@ -82,13 +82,13 @@ In addition to #define for constants, we have #if and #ifdef and #else and more 
 
 Like the C language it descends from, LPC has two types of includes. One uses angle brackets, while the other uses double-quotes. When including, DGD checks the normal set of include directories to find the file it was told to look for. The only difference with double-quotes is that DGD will first check the absolute path given and ***then*** check in the include directories. What's the "normal" set of include directories? They come from your Configuration File (see later chapter.)
 
-Why do you care about double-quotes versus angle brackets? Usually, they're mostly used idiomatically - angle-bracket include is often for things like the Kernel Library's own files, indicating they are "system" files, while double-quote includes are mostly used for headers from your own application.
+Why do you care about double-quotes versus angle brackets? Usually, they're mostly used idiomatically - angle-bracket include is often for things like the Cloud Server's own files, indicating they are "system" files, while double-quote includes are mostly used for headers from your own application.
 
 Inclusion isn't like inheritance. Inclusion just substitutes the contents of the included file into the program, exactly as though you had cut-and-pasted it into place. It's not clever about it. There's no special data hiding or anything.
 
 Files meant to be included normally have a ".h" extension for "header", and normally consist of constants and function prototypes. Less commonly they might contain private functions to be used by other functions in the program. It's possible for them to contain other code, but it's unusual.
 
-In the file above, there are includes of Kernel Library files like kernel/access.h. Those define constants like API_ACCESS for our program to use.
+In the file above, there are includes of Cloud Server files like kernel/access.h. Those define constants like API_ACCESS for our program to use.
 
 There's also an include for "/usr/System/lib/query_origin.c". In that case, it's a file with an actual function in it. Instead of using "inherit" to get the function through a parent object, the example above just puts a copy of the function into the source code directly, getting its own copy. That can be wasteful if a function is used a lot since there's one copy of the code for everybody that uses it. But it's allowed, and sometimes it's useful.
 
@@ -135,7 +135,7 @@ This would allow the create() function to call get_hostname(), even though get_h
 
 ### Create()
 
-If a singleton or cloneable program has a create() function, it will be called when that program gets a function called. If you're using the Kernel Library, that normally means immediately upon creation.
+If a singleton or cloneable program has a create() function, it will be called when that program receives a function call. If you're using the Kernel Library, that normally means immediately when it's cloned, but not necessarily when first compiled.
 
 Create() will be called with no arguments for a cloneable parent object or for a singleton. It will be called with the integer 1 as the only argument for a cloned object.
 

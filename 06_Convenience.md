@@ -20,7 +20,7 @@ Have a look at /kernel/obj/wiztool.c (the text-UI interface for admins) and you'
 
 Want to rebuild a particular source file before every command? Easy. Or add a command to repeat the previous command? Not hard.
 
-You'll discover rapidly that the Kernel Library is a sort of miniature, rough, old-style operating system. It comes with very few conveniences. The hard part is that it feels very rough. The opportunity is that you can put in a shockingly small amount of effort and get a much better result out of it.
+You'll discover rapidly that the Cloud Server is a sort of miniature, rough, old-style operating system. It comes with very few conveniences. The hard part is that it feels very rough. The opportunity is that you can put in a shockingly small amount of effort and get a much better result out of it.
 
 ## Letting Me Do It
 

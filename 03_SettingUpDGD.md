@@ -46,26 +46,26 @@ Now that you have dgd in your path, let's make sure it worked.
 
 DGD doesn't ship with any runnable DGD applications. You're going to need to make one.
 
-Luckily, the Kernel library fixes this problem: it's runnable out of the box. Next to where you cloned DGD, let's clone the Kernel library:
+Luckily, the Cloud Server fixes this problem: it's runnable out of the box. Next to where you cloned DGD, let's clone the Cloud Server:
 
-    git clone https://github.com/ChatTheatre/kernellib.git
+    git clone https://github.com/dworkin/cloud-server.git
 
-Once you have it cloned, go to kernel.dgd and change its "directory" property to "src".
+Once you have it cloned, change into its directory. Then go to cloud.dgd and change its "directory" property to "src".
 
 Now, run it with dgd:
 
-    dgd kernel.dgd
+    dgd cloud.dgd
 
 You should see text indicating that a server is running:
 
 ```
-Noahs-MBP-2:kernellib noah$ ../dgd/bin/dgd kernel.dgd
+Noahs-MBP-2:cloud-server noah$ ../dgd/bin/dgd cloud.dgd
 Sep 27 13:28:31 ** DGD 1.6.13
 Sep 27 13:28:31 ** Initializing...
 Sep 27 13:28:31 ** Initialization complete.
 ```
 
-You have a functioning installation of DGD. Now you just have to learn how to use it!
+You have a functioning installation of DGD. Now you just have to learn how to use it in later chapters!
 
 (Hit control-C to interrupt the program.)
 
@@ -112,3 +112,9 @@ Most of this book assumes you're happy using the Kernel Library and/or the Cloud
 In the tutorial, you'll clone the Cloud Server and use it. But mostly you'll be using the Kernel Library.
 
 Why clone the whole Cloud Server, then? Because it's small and it has a few useful extra changes. It's also the most up-to-date version of the Kernel Library. And if you decide to poke around inside it, it can show you a lot about how to use the Kernel Library. Sample code for DGD is hard to find and the Cloud Library is a high-quality source of examples written by the author of DGD.
+
+## How Do I Keep Track?
+
+I'll try to distinguish between the Kernel Library and the Cloud Server in this book, though sometimes it's hard. However if you learn both of them together, you probably won't have a great understanding of where one ends and the other begins. That's okay. You'll learn when and how you need to, but only ***if*** you need to.
+
+If you need to, the first thing to do is to read the source code for the Cloud Server and Kernel Library.

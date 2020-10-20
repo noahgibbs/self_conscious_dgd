@@ -76,15 +76,15 @@ You can pass a zero-length array with "..." and it will pass zero additional arg
 
 DGD and LPC have some unusual ways it talks about its functions. You'll especially notice this in some of the documentation.
 
-A DGD "apply" is a function called by the DGD interpreter itself. You won't directly see applies if you're using the Kernel Library &mdash; DGD calls the Kernel Library, which might then call to your code.
+A DGD "apply" is a function called by the DGD interpreter itself. You won't directly see applies if you're using the Cloud Server &mdash; DGD calls the Cloud Server, which might then call to your code.
 
-A "hook" is a function you define that is expected to be called by somebody else. For instance, if you call DRIVER->set_object_manager(my_object) then you're saying my_object has defined a lot of different functions, which you expect the Kernel Library will call from time to time. In this example, my_object would have its function "compiling" called whenever an object starts being compiled. Compiling is a "hook" function, called by the Kernel Library.
+A "hook" is a function you define that is expected to be called by somebody else. For instance, if you call DRIVER->set_object_manager(my_object) then you're saying my_object has defined a lot of different functions, which you expect the Cloud Server will call from time to time. In this example, my_object would have its function "compiling" called whenever an object starts being compiled. Compiling is a "hook" function, called by the Cloud Server.
 
-An afun (also called an efun) is defined by the Kernel Library's auto object, and is thus available in any object anywhere. Something like find_object() or call_other() or get_dir() would be an efun. Note that an efun can sometimes shadow built-in DGD functions. In that case your objects will see the shadowed version defined by the Kernel Library rather than the built-in DGD type. If you see multiple pieces of documentation for the same function and it has different numbers of arguments (example: clone_object), that's often why.
+An afun (also called an efun) is defined by the Cloud Server's auto object, and is thus available in any object anywhere. Something like find_object() or call_other() or get_dir() would be an efun. Note that an efun can sometimes shadow built-in DGD functions. In that case your objects will see the shadowed version defined by the Cloud Server rather than the built-in DGD type. If you see multiple pieces of documentation for the same function and it has different numbers of arguments (example: clone_object), that's often why.
 
 Built-in DGD functions are called kfuns. They're implemented by the DGD interpreter itself using C++ code. If they're not shadowed (see efun above), your code can call them from anywhere.
 
-An lfun is a function defined by one of your objects, not by DGD or by the Kernel Library. For instance, you define create() in your object, to be called later by the Kernel Library. It is both a hook and an lfun.
+An lfun is a function defined by one of your objects, not by DGD or by the Cloud Server. For instance, you define create() in your object, to be called later by the Cloud Server. It is both a hook and an lfun.
 
 Older LPC dialects often had widely varying behaviour between these function types in which ones were visible where. DGD mostly has a simpler system where you don't (mostly) need to worry exactly where a function was defined, and DGD-defined kfuns act like Auto-defined efuns act like inheritable-defined lfuns from the point of view of an inheritor.
 

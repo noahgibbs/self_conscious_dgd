@@ -8,7 +8,7 @@ In general, those errors can be caught by other LPC code.
 
 ## Error Notifications
 
-DGD will notify the Kernel Library when an error occurs. The Kernel Library will in turn notify the Error Manager if one is registered. See the chapter on the Error Manager for more details.
+DGD will notify the Cloud Server when an error occurs. The Cloud Server has an error manager by default, but you can register your own if you'd rather. See the chapter on the Error Manager for more details.
 
 ## Fatal Errors
 

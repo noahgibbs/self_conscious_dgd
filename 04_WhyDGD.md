@@ -32,7 +32,7 @@ DGD is a fairly dynamic language. It normally rewrites less of itself than Ruby,
 
 DGD does it by allowing you to recompile individual objects. Then you can update all the old objects to the latest version -- not just of the code, but any data updates that go with it.
 
-You can ask DGD to recompile an object. After your timeslice has finished, DGD will recompile the object's code and figure out how to update existing objects to the new code if it can. A modern DGD application will make sure it's possible to update all objects -- some older DGD codebases would leave "orphan" objects around with obsolete code attached and you'd have to figure out how to clean them all up. This guaranteed cleanup and upgrade is one of many problems that the Kernel Library (or Cloud Server) can solve for you.
+You can ask DGD to recompile an object. After your timeslice has finished, DGD will recompile the object's code and figure out how to update existing objects to the new code if it can. A modern DGD application will make sure it's possible to update all objects -- some older DGD codebases would leave "orphan" objects around with obsolete code attached and you'd have to figure out how to clean them all up. This guaranteed cleanup and upgrade is one of many problems that the Kernel Library can solve for you.
 
 This means that over time you can keep updating a single running DGD process to the latest code, potentially for many years. The record as I write this is Castle Marrach, a DGD application with an effective uptime of over twenty years.
 
@@ -90,12 +90,12 @@ DGD limits the maximum size of your arrays or mappings. You simply can't have an
 
 Similarly there is a maximum string size. You'll also need to tell DGD in its configuration file how big the memory sectors are that objects are made of. And you get a limited number of them. In addition to these compiled-in limitations, the Kernel Library allows you to carefully manage the maximum size of objects that each object-owner can have.
 
-This is like the "natively disk-based" entry above &mdash; DGD carefully counts blocks of memory, and it expects you to pay attention to how memory gets used.
+This is like the "natively disk-based" entry above &mdash; DGD carefully counts blocks of memory and it expects you to pay attention to how memory gets used.
 
 ## So Then...?
 
-All of these things together make a few particular clusters of oddity. DGD is designed for producing persistent (i.e. they don't reboot/restart) networked servers with complex state transitions (think: atomics, which are like DB transactions). It should make sense that this grew out of old massively-multiplayer games.
+All of these things together make a few particular clusters of oddity. DGD is designed for producing persistent (i.e. they don't reboot/restart) networked servers with complex state transitions (think: atomics, which are like database transactions). It should make sense that this grew out of old massively-multiplayer games.
 
 DGD is also exceptionally good at ***sandboxing*** code, a rare specialty shared by JavaScript. Sandboxing code means running code you don't fully trust in an environment with built-in limits. DGD's limiting of ticks and stack depth are good for this, as are its limited-size objects and the Kernel Library's multilayered security model.
 
-All of the types of oddity above are about DGD itself. There are some later types of weirdness that are about the Kernel Library. That is, they're about ***how to manage*** the situation, rather than the situation itself.
+All of the types of oddity above are about DGD itself. There are some later types of weirdness that are about the Kernel Library or Cloud Server. That is, they're about ***how to manage*** the situation, rather than the situation itself.

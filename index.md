@@ -18,7 +18,7 @@ What Unusual Things Does DGD Do?
 * [Caller-Based Security](17_Security.md)
 * [What's Unexpected?](18_Unexpected.md)
 
-Configuring DGD and the Kernel
+Configuring DGD and the Cloud Server
 
 * [The Auto and Driver Objects](20_AutoDriver.md)
 * The Object Manager
@@ -40,7 +40,7 @@ An LPC Language Reference:
 
 Lastly:
 
-* Running Without the Kernellib
+* Running Without the Cloud Server (or Kernel Library)
 
 
 
