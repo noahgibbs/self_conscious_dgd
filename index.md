@@ -1,3 +1,6 @@
+---
+title: Self-Conscious DGD
+---
 An Introduction to DGD:
 
 * [Introduction](01_Introduction.md)
@@ -53,3 +56,4 @@ No current place in the outline:
 * DGD's Editor
 * parse_string
 * Cloud Server driver and auto objects - what functions do they provide?
+* the Kernel Library's full security model - maybe in sections by files, compiling objs, kfuns, etc.
