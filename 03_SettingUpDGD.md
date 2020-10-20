@@ -87,8 +87,28 @@ Windows has a telnet client called ["PuTTY"](https://www.putty.org) that works w
 
 Windows 10 also has a specific telnet feature which can be enabled. Google for "Windows 10: Enabling Telnet Client." Your own version of windows might have some system version of telnet as well.
 
-## What Is the Kernel Library?
+## What is the Kernel Library?
 
-DGD has a bunch of weird, interesting features. Many of them require a bunch of extra infrastructure to manage properly. You can build it all yourself. Or you can use a structure that handles it. There are a lot of possible structures that ***could*** handle it, and DGD would like you to be able to use any of them.
+DGD has a bunch of weird, interesting features like atomic functions and persistence. They require a bunch of extra infrastructure to manage properly. You can build it all yourself. Or you can use a structure that handles it. There are a lot of possible structures that ***could*** handle it, and the base DGD language would like you to be able to use any of them.
 
-But there's a specific, common way to handle most of it that you can just put in place and use. It's called the Kernel Library (or Kernellib or Kernel MUDLib.) There's also a closely-related later version called the Cloud Server which is the Kernel Library plus some extra functionality. Most of this book assumes you're happy using the Kernel Library or the Cloud Server. There will be a chapter toward the end that explains what raw DGD is like without it.
+But there's a specific, common way to handle most of it that you can just put in place and use. It's called the Kernel Library (or Kernellib or Kernel MUDLib.) It divides objects into inheritable versus cloneable by their path for persistence, and defines an atomic-friendly error handling method. It adds permissions and users on top of raw DGD, which doesn't really have those. It adds some "standard library" sorts of functionality which you ***could*** build for yourself but it's nice not to have to.
+
+There are a few reasons you might not want to use the Kernel Library, but normally you would. It's a bit like the C standard library, which can be removed entirely for tiny embedded processors. Despite that, 99.9% of everybody just uses it without a second thought. We ***like*** conventions and we ***like*** a standard library.
+
+The Kernel Library [exists on its own in deprecated form](https://github.com/dworkin/kernellib). There is also a [separate fork maintained by Raymond Jennings](https://github.com/shentino/kernellib). But the author's latest work on it is as part of the Cloud Server.
+
+## What is the Cloud Server?
+
+The Kernel Library is designed to be extremely stable. It's like an operating system interface &mdash; changes to it are rare and its interfaces are kept intentionally as simple as possible to avoid changing often. Those interfaces are often inconvenient, but convenience is simply not as high a priority. You could say all of this about the Linux API for all the same reasons. Libc (the C language standard library) is similar that way too. It is a low-level capability-based interface that should almost never break existing code.
+
+The Kernel is also designed to require no direct modification. You might upgrade to a later version eventually. But when you're using it, it calls hooks into other parts of your application. It's a library, not an example application.
+
+The Cloud Server is different. It's built on top of the Kernel Library. But it includes a web server, an LPC parser designed for building LPC-on-top-of-LPC, various data structures and iterators and other standard library stuff. In the past it has included a little bit of text-game content. It's intended to be a playground and showroom for some of DGD's more interesting features. But it changes occasionally. Some of its features may require modification to be useful for you. You might find yourself forking (copying and modifying) from some of the base parts of the Cloud Library.
+
+It's not an OS interface. It's not really a standard library, though it contains useful general-purpose code.
+
+Most of this book assumes you're happy using the Kernel Library and/or the Cloud Server. There will be a chapter toward the end that explains what raw DGD is like without it.
+
+In the tutorial, you'll clone the Cloud Server and use it. But mostly you'll be using the Kernel Library.
+
+Why clone the whole Cloud Server, then? Because it's small and it has a few useful extra changes. It's also the most up-to-date version of the Kernel Library. And if you decide to poke around inside it, it can show you a lot about how to use the Kernel Library. Sample code for DGD is hard to find and the Cloud Library is a high-quality source of examples written by the author of DGD.
