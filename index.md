@@ -41,7 +41,7 @@ An LPC Language Reference:
 
 Lastly:
 
-* Running Without the Cloud Server (or Kernel Library)
+* [Running Without the Cloud Server or Kernel Library](40_NoKernelLibrary.md)
 
 
 
