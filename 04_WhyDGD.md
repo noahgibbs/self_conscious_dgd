@@ -18,7 +18,7 @@ DGD normally runs as a series of "tasks," which are also sometimes called "times
 
 A timeslice is a short period where code runs in response to some event occurring. The timeslice might run because it's time (e.g. "run every 10 milliseconds") or because network packets have arrived. DGD defines a few "top-level" events, but it's common for other DGD code to schedule more events afterward as well. This, too, is a lot like Node.js and other evented platforms.
 
-Timeslices are weirder than they seem - see "atomicity" below.
+Timeslices are weirder than they seem - see [atomicity](#Atomicity) below.
 
 A timeslice should only run for a short time, much like a Node.js event handler. DGD has some built-in runtime limiters so you can guarantee that a "runaway" function call doesn't go for too long. Instead DGD can interrupt them to guarantee a maximum timeslice length of your choice.
 

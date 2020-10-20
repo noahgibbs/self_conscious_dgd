@@ -80,7 +80,7 @@ In addition to #define for constants, we have #if and #ifdef and #else and more 
 
 \#include will include the contents of a file where you tell it to. For instance, "#include <kernel/kernel.h>" will find kernel.h and drop the contents into the file where you put the \#include. It's basically cut and paste.
 
-Like the C language it descends from, LPC has two types of includes. One uses angle brackets, while the other uses double-quotes. When including, DGD checks the normal set of include directories to find the file it was told to look for. The only difference with double-quotes is that DGD will first check the absolute path given and ***then*** check in the include directories. What's the "normal" set of include directories? They come from your Configuration File (see later chapter.)
+Like the C language it descends from, LPC has two types of includes. One uses angle brackets, while the other uses double-quotes. When including, DGD checks the normal set of include directories to find the file it was told to look for. The only difference with double-quotes is that DGD will first check the absolute path given and ***then*** check in the include directories. What's the "normal" set of include directories? They come from your Configuration File (see [The Configuration File](ConfigurationFile.md).)
 
 Why do you care about double-quotes versus angle brackets? Usually, they're mostly used idiomatically - angle-bracket include is often for things like the Cloud Server's own files, indicating they are "system" files, while double-quote includes are mostly used for headers from your own application.
 

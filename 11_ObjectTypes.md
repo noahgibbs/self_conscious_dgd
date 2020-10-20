@@ -4,13 +4,13 @@ DGD calls the code in a single .c file a "program." Programs can be a lot of dif
 
 In DGD, each program manages a small area of memory all its own (a "memory arena.") The object can be in-memory ("swapped in") or exist on disk, waiting to be used ("swapped out.") DGD tries to keep most objects ***out*** of memory most of the time, and brings objects into memory only when somebody tries to use them.
 
-An "object" in DGD is one of these programs that manages its own memory. See "Lightweight Objects" below for one subtlety, though...
+An "object" in DGD is one of these programs that manages its own memory. See [Lightweight Objects](#Lightweight%20Objects) below for one subtlety, though...
 
 ## Cloneable Objects
 
 An object with /obj/ in its name, like the ones you've been using in the tutorial, are called "cloneable" objects. You've been using the "clone" command to clone them. Make sense?
 
-They're not allowed to have /lib/ anywhere in their names. You'll see why below under "Libraries." It also can't have /data/ in the name. You'll see why under "Lightweight Objects."
+They're not allowed to have /lib/ anywhere in their names. You'll see why below under [Libraries](#Libraries). It also can't have /data/ in the name. You'll see why under [Lightweight Objects](#Lightweight%20Objects).
 
 What DGD calls a "clone," most languages would call an "instance." DGD is a little unusual in that the "parent" object exists and gets its own data fields. Then each clone (instance) gets its own data, as you'd expect.
 
@@ -22,7 +22,9 @@ A clone (either a parent or an instance) can always be looked up by name. DGD wo
 
 The Kernel Library has automatic per-owner tracking of cloneables, including both parents and instances. So a sufficiently-privileged object can get a full list of all of them that exist.
 
-## Libraries, a.k.a. "Inheritables"
+## Libraries
+
+(Libraries are also known as Inheritables.)
 
 One of the major purposes of the Kernel Library is to separate out inheritable libraries from cloneables. You may remember me mentioning that when talking about persistence and dynamic code upgrades.
 
@@ -34,7 +36,9 @@ You can never get a reference to a library object. They exist internally, but yo
 
 Libraries can be destructed as part of reloading them with new code. But the Kernel Library is very careful not to allow outdated code to stick around. You ***can*** destroy them, but you'd normally only do it as part of a destroy-and-reload operation to update code.
 
-## Lightweight Objects (LWOs)
+## Lightweight Objects
+
+(Lightweight Objects are also called LWOs.)
 
 Certain things in DGD ***don't*** manage their own memory. An array or a mapping lives inside another object. It doesn't get its own managed chunk of memory. A primitive data object like an integer or a string lives inside another object as well.
 
@@ -66,6 +70,6 @@ Similarly, names with a hash sign and a number (clones, LWOs) aren't optional. Y
 
 ## Object Life Cycle
 
-When an object is created, its create() function will be called if it has one. If you have an object manager in place (see object management) then you can add other "hooks" into the object life cycle. It's common to add a function name that gets called when an object is recompiled, for instance. The Cloud Server calls this method "patch".
+When an object is created, its create() function will be called if it has one. If you have an object manager in place (see [Object Management](21_ObjectManagement.md)) then you can add other "hooks" into the object life cycle. It's common to add a function name that gets called when an object is recompiled, for instance. The Cloud Server calls this method "patch".
 
 Similarly, it's possible to create your own destructors using your object manager. But neither DGD nor the Cloud Server implements that.

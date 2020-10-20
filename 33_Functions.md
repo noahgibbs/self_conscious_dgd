@@ -18,7 +18,7 @@ A nomask function can't be masked. In other words, an object that inherits from 
 
 An atomic function will have no effects if it is aborted by an error. Network I/O, file I/O and global variable writes will all be reversed if they occurred inside an atomic function and an error is then raised. Certain operations are not permitted inside an atomic function. Atomic functions use more processor and memory resources. They cost double the normal number of ticks when they run inside rlimits().
 
-For more about atomic functions, see a later chapter. They're one of the most powerful features of DGD, but they can be tricky to use well. In effect, they are database transactions for the language itself.
+For more about atomic functions, see [their chapter](15_Atomic.md). They're one of the most powerful features of DGD, but they can be tricky to use well. In effect, they are database transactions for the language itself.
 
 ## Scope and Inheritance
 

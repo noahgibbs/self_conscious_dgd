@@ -21,9 +21,9 @@ What Unusual Things Does DGD Do?
 Configuring DGD and the Cloud Server
 
 * [The Auto and Driver Objects](20_AutoDriver.md)
-* The Object Manager
+* [Object Management](21_ObjectManagement.md)
 * [The Error Manager](23_ErrorManager.md)
-* The Configuration File
+* [The Configuration File](25_ConfigurationFile.md)
 * Networks, Connections and Users
 
 An LPC Language Reference:

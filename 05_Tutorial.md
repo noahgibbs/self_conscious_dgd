@@ -4,7 +4,7 @@ In this chapter we'll make an LPC playground based on the Cloud Server. You'll l
 
 ## Getting Started: Making a DGD Application
 
-I'll assume you've already got a functioning DGD installation. I'll also assume you have DGD and the Cloud Server cloned. See "Installing DGD" if you don't.
+I'll assume you've already got a functioning DGD installation. I'll also assume you have DGD and the Cloud Server cloned. See [Setting Up DGD](03_SettingUpDGD.md) if you don't.
 
 So let's look at how to run some DGD code.
 

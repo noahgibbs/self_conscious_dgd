@@ -16,7 +16,7 @@ If an object has /lib/ in its path then it can be inherited, but not cloned. If 
 
 ## Inheritance Statements
 
-DGD has a pretty strict idea of which statements happen in what order. Inherit statements happen very early on (see Program Structure.)
+DGD has a pretty strict idea of which statements happen in what order. Inherit statements happen very early on (see [Program Structure](12_ProgramStructure.md).)
 
 An inherit statement uses the word "inherit." Optionally it can start with "private" or have a scope name. It has to say what object is being inherited.
 

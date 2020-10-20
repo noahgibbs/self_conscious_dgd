@@ -18,7 +18,7 @@ $4 = ([ 1:2 ])
 $5 = ([ "a":2 ])
 ```
 
-Note that both integers and strings are working fine here as keys for a mapping. You can use all sorts of DGD objects as keys, but strings and integers are often the easiest and best choices.
+Note that both integers and strings work fine here as keys for a mapping. You can use all sorts of DGD objects as keys but strings and integers are often the easiest and best choices.
 
 ## Writing Types
 
@@ -242,7 +242,7 @@ $10 = 0
 
 ## Keys in Mappings
 
-You can technically use other objects, including mappings, as keys for a mapping. But because of equality rules (see below) you would need to make sure you used ***exactly the same mapping object*** to retrieve the value, not just one with the same things in it. In other words, if you used the empty mapping as a key, you couldn't just dereference with an empty mapping. You'd have to use ***the same mapping object***:
+You can technically use other objects, including mappings, as keys for a mapping. But because of equality rules (see [Equality Operators](#Equality%20Operators)) you would need to make sure you used ***exactly the same mapping object*** to retrieve the value, not just one with the same things in it. In other words, if you used the empty mapping as a key, you couldn't just dereference with an empty mapping. You'd have to use ***the same mapping object***:
 
 ```
 # code ([ ([ ]): 1 ])[([ ])]
