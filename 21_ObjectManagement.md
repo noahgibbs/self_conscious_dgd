@@ -9,8 +9,9 @@ There have been several historical object managers for DGD.
 * Geir Harald Hanssen wrote one for his Ph.D. thesis about DGD
 * I wrote one for my Phantasmal MUD Library
 * Skotos.net wrote one for their games, called ProgDB
+* The Cloud Server's built-in object manager
 
-There is now a fourth object manager, which you are using. It ships as part of the Cloud Server, though you're allowed to override and replace it if you like.
+The fourth object manager is what you are currently using. You're allowed to override and replace it if you like.
 
 ## An Object Manager Tracks Objects
 
