@@ -23,6 +23,7 @@ Configuring DGD and the Cloud Server
 * [The Auto and Driver Objects](20_AutoDriver.md)
 * [Object Management](21_ObjectManagement.md)
 * [The Error Manager](23_ErrorManager.md)
+* [Users and Resources](24_UsersResources.md)
 * [The Configuration File](25_ConfigurationFile.md)
 * Networks, Connections and Users
 
@@ -51,4 +52,4 @@ No current place in the outline:
 * Wiztool commands
 * DGD's Editor
 * parse_string
-* Cloud Server driver and auto objects - what do they provide?
+* Cloud Server driver and auto objects - what functions do they provide?
