@@ -11,7 +11,7 @@ static void create(varargs int clone)
 }
 ```
 
-If the code inside runs for too long or tries to call too many layers of sub-functions, DGD will raise an error. This is useful for "sandboxing" code and making sure it doesn't use up too many resources. Not surprisingly, the Cloud Server will sandbox ***you*** when you're running code. That way a single infinite loop in a "code" command won't halt the whole application.
+If the code inside runs for too long or tries to call too many layers of sub-functions, DGD will raise an error. This is useful for sandboxing code and making sure it doesn't use up too many resources. Not surprisingly, the Kernel Library will sandbox ***you*** when you're running code. That way a single infinite loop in a "code" command won't halt the whole application.
 
 If you make the rlimits numbers above much smaller, like 10 and 10, you'll instead see an "Out of ticks" message. That means trying to send you a message cost more than 10 ticks and got an error. You didn't catch the error so it just showed up on the telnet connection.
 
@@ -69,3 +69,15 @@ void create(void) {
     this_user()->message("Stack depth limit: " + status()[ST_STACKDEPTH] + "\n");
 }
 ```
+
+## JIT, Extensions and Optimisation
+
+There are ways you can optimise your DGD code. DGD has a JIT facility that will recompile at runtime. It's possible to add C extensions to perform specific operations faster than would be possible in interpreted LPC.
+
+How does that interact with tracking ticks?
+
+To the extent reasonable, it doesn't. A JITted function should track ticks exactly the same as its non-JITted equivalent. This should make sense: a tick is meant as a portable, processor-abstracted unit. If you're running on a machine with a slower processor, or less RAM so DGD has to load from disk more often, that doesn't change the number of ticks. Ticks are meant to be predictable in a way actual CPU time is not.
+
+A C extension, of course, has the freedom to do all sorts of things. But if follows the spirit of DGD, it should track ticks in roughly the usual way. It should also do it in a hardware-independent way.
+
+Ticks are a user-visible resource that affect what code they can run. So "predictable" is more important than "physically representative of your current CPU or VM."

@@ -12,7 +12,7 @@ But if the function had an uncaught error, your changes are reverted. Writes to 
 
 ## Limitations and Differences
 
-There are a few ways that even an error-free atomic function is different.
+There are a few ways that even an error-free atomic function is different from non-atomic function.
 
 Atomic functions count as double-cost for ticks. That reflects the fact that an atomic function requires more memory and CPU resources even when it succeeds.
 
@@ -49,3 +49,23 @@ All this encoding and decoding could be inconvenient, so the Cloud Server added 
 This method is used in the Cloud Server to do atomic compilation of objects but pass compilation errors out to the surrounding context if it fails.
 
 Underneath, this is accomplished because the driver object can replace the error string for atomic_error and runtime_error. That way, atomic error strings are replaced with their encoded version, while the runtime_error generated ***outside*** the atomic context is replaced by its decoded version.
+
+## C Extensions and JIT
+
+There are various "shortcuts" you can use to optimise DGD. DGD has built-in JIT ability. How does that affect atomic functions?
+
+It shouldn't. If it does, that's a bug. The whole point of JIT is that it shouldn't change the semantics of the language. It should be entirely invisible to the application developer.
+
+What about C extensions? That's a harder question.
+
+Some of the answer is: DGD already includes C extensions, but they're built-in. Network I/O is done by the driver and it fully and properly supports atomic functions. But file I/O is also done by the driver - and it supports file reads in atomic functions, but file writes are forbidden.
+
+So which is "correct?" Both.
+
+A well-written C extension should either notice atomic functions and handle them like network I/O does, or it should notice them and fail like file writes do.
+
+So for instance, an extension should never write a file inside an atomic function, then leave it there when the atomic function fails. It should never write to a global variable or other type of state, then leave that write intact when the function fails.
+
+It's possible for you to write a buggy C extension that doesn't properly handle atomic functions. C extensions are very powerful and they can mess up DGD in all sorts of ways. But you should assume that a C extension that does those things is wrong. Atomic functions should be atomic - they should fully and correctly succeed or they should fail. If a given extension can't be reverted, it should fail when you try. If you're writing an extension and you're not sure how to support atomic functions, you should check for them and fail.
+
+What if your C extension has a real-world side effect? Is it just incompatible with atomic? Maybe. If possible, though, you could consider delaying that effect until you leave the outermost atomic function. Make a list of changes to be made later, and then only "really" do them once you've finished all atomic functions, or after the timeslice is over. This is more complicated, but it also doesn't break when developers use atomic functions. If it sounds too complicated, just have your extension fail inside any atomic function. You'd be doing the wrong thing anyway, but now you know that.
