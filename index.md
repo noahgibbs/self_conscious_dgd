@@ -19,6 +19,7 @@ What Unusual Things Does DGD Do?
 * [Atomic Functions and How to Use Them](15_Atomic.md)
 * [Ticks, Stack and rlimits](16_Rlimits.md)
 * [Caller-Based Security](17_Security.md)
+* [Object Upgrades and call_touch](19_CallTouch.md)
 * [What's Unexpected?](18_Unexpected.md)
 
 Configuring DGD and the Cloud Server
@@ -57,3 +58,4 @@ No current place in the outline:
 * parse_string
 * Cloud Server driver and auto objects - what functions do they provide?
 * the Kernel Library's full security model - maybe in sections by files, compiling objs, kfuns, etc.
+* all the kfuns

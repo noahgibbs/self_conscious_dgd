@@ -19,11 +19,21 @@ The Kernel Library already has an ObjRegD which tracks basically all objects by 
 
 The Object Manager normally does more tracking. What objects does each object inherit? What files does it include? What issue (version) of each object's code is it using?
 
-## Tracking and Preventing Inheritance
+## Tracking and Modifying Inheritance
 
-## Tracking and Preventing File Inclusion
+When one program inherits from another, the registered object manager's "inherit_program" function will be called. A string can be returned to indicate the path to actually inherit from &mdash; it doesn't have to be the same one the program tried to include. Or an array of strings can be returned as the inherited program's new effective contents.
 
-## Tracking and Preventing Cross-Object Function Calls
+In other words, the object manager can make any inheritance do anything it wants.
+
+## Tracking and Modifying File Inclusion
+
+When a file is included, the registered object manager's "include_file" function will be called. A string can be returned to indicate the path to include. It doesn't have to be the same one the program tried to include. An array of strings can be returned as the file's new effective contents.
+
+As with inheritance, the object manager can make any file inclusion do anything it wants.
+
+## Preventing Cross-Object Function Calls
+
+The registered object manager's "forbid_call" function will be called when call_other needs to resolve a string into an object. If forbid_call returns nonzero, the call will fail with an error.
 
 ## Upgrading Objects
 
