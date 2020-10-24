@@ -18,7 +18,7 @@ DGD spent awhile being "free for noncommercial use, licenseable for commercial u
 
 Nobody bought one. Ever.
 
-DGD's author (Felix Croes, a.k.a. Dworkin) then gave an exclusive commercial license for DGD to an external company. They sold a few licenses &mdash; I personally know of four. Years later they went out of business and Dworkin gave up the sublicense in disgust. At this point there is an extremely DGD-like "other" product, sharing nearly all of DGD's source code, called Hydra, released under AGPL. Hydra is basically a renamed and expanded DGD that does ***not*** have any commercial license encumbrances with some random other company. It's fully backward-compatible. Everything you learn here about DGD applies to Hydra as well.
+DGD's author (Felix Croes, a.k.a. Dworkin) then gave an exclusive commercial license for DGD to an external company. They sold a few licenses &mdash; I personally know of four. Years later they went out of business and Dworkin gave up the sublicense in disgust. At this point there is an extremely DGD-like "other" product, sharing nearly all of DGD's source code, called Hydra, released as "free limited binary, but basically closed and commercial." Hydra is effectively a renamed and expanded DGD that does ***not*** have any commercial license encumbrances with some random other company. It's fully backward-compatible. Everything you learn here about DGD applies to Hydra as well.
 
 ## SkotOS.net
 
@@ -26,8 +26,8 @@ That's not to say that nobody ***used*** their commercial license. SkotOS.net wa
 
 The ton of money never materialised. I'm sure you're shocked. But the remains of SkotOS is still out there, and these days is open source as well under the name "ChatTheatre." It remains one of the most advanced text games ever made, a title which has few serious contenders.
 
-Dworkin eventually decided to handle licensing more like how other languages do. Since 2010, DGD and Hydra use the AGPL. Does that mean you have to distribute the full code to your DGD app is somebody connects to the server? Not according to Dworkin. He says that a DGD interpreter running your source code doesn't count as "linking."
+Dworkin eventually decided to handle licensing more like how other languages do. Since 2010, DGD uses the AGPL and Hydra is basically the "expanded commercial version." Does that mean you have to distribute the full code to your DGD app is somebody connects to the server? Not according to Dworkin. He says that a DGD interpreter running your source code doesn't count as "linking."
 
 ## Weird Stuff
 
-DGD has also been used for iChat, which became Yahoo! Chatrooms. There was one Bitcoin exchange built in DGD, once. Geir Harald Hanssen [wrote his thesis about DGD](https://geir-hansen.com/distributedworld.pdf).
+DGD has also been used for iChat, which became Yahoo! Chatrooms. There was one Bitcoin exchange built in DGD, once. Geir Harald Hansen [wrote his thesis about DGD](https://geir-hansen.com/distributedworld.pdf).
