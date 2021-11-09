@@ -36,10 +36,16 @@ You can be the smug grognard for ***those*** features... If you learn now.
 
 ## Relatives
 
-DGD's vision isn't likely to be entirely unique, especially as interesting features get stolen over the years. What are its relatives?
+DGD's vision can't be be entirely unique. It uses older ideas, and new languages come along to copy old features every year. What are its relatives?
 
-Its unusual execution model has a lot in common with Node.js, and a little with in-browser JavaScript.
+Its unusual execution model has a lot in common with Node.js, and a little in common with in-browser JavaScript. Mostly it's an evented system with tight limits on how long each event handler can take. In that sense it's also a lot like hardware interrupt handling from back when DGD was written.
 
 Its sandboxing is a bit JavaScript-like. Its self-sandboxing through rewriting and recompilation is a bit like Ruby and a bit like CommonLISP macros.
 
-Its limited data-type sizes and careful resource-counting isn't much like most general-purpose languages. If you've used the SalesForce approximation of Java and/or dotNet called Apex, it's a bit like that. Counting resources at a very granular level is uncommon, and DGD doesn't have much company in how it does so.
+Its limited data-type sizes and careful resource-counting isn't much like most general-purpose languages. If you've used SalesForce's Apex environment, it's a bit like that. Counting resources at a very granular level is uncommon, and not many languages do it like DGD.
+
+Its atomic functions are more like database transactions than anything else. So in that sense it's a bit like SQL. Though again, nobody really does it the same way. Similarly, using a transaction-like method for parallelism through optimistic speculative execution is a thing processors do frequently, and languages nearly never do at all. So in that sense it's a bit like assembly language or machine code.
+
+DGD's Kernel Library has an extremely rigid application structure a bit reminiscent of Ruby on Rails or other modern web applications -- all of which it predates by quite a long time. I don't think they copied DGD. I think it's so common to structure your applications in a vaguely similar way that it just makes sense to bake those assumptions into your framework or language. C-descended languages are, frankly, weird in how willing they are to let you put things in the "wrong" place but still use them. You could also argue that Java namespacing is similar, though I personally disagree.
+
+The Kernel Library's security by checking the call stack and calling objects, then literally using their name, was entirely new to me. It seems like a simple enough idea that *somebody* else must do it, but I have no idea who. Do you know? If so, let me know!
